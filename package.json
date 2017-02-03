@@ -4,7 +4,8 @@
   "description": "cliente para api do sistema mk-auth para provedores",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gendoc": "jsdoc2md --files app.js modules/api/*.js --template README.hbs > README.md"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,8 @@
   "dependencies": {
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^2.0.1"
   }
 }

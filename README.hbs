@@ -1,0 +1,148 @@
+# mkauth-node-api
+Client em node.js para API do sistema [Mk-Auth](http://mk-auth.com.br/) de controle de provedores.
+Este pacote oferece suporte à todos os recursos oferecidos pela mini API do sistema.
+
+### Métodos suportados
+* Clientes
+    * listar tudo
+    * detalhar um cliente específico
+* Titulo
+    * listar tudo
+    * detalhar um título específico
+    * receber
+* chamado
+    * listar tudo
+    * detalhar um chamado específico
+* Conta
+    * listar tudo
+    * detalhar uma conta específica
+* Empresa
+    * listar tudo
+* Instalacao
+    * listar tudo
+    * detalhar uma instalação específica
+* Plano
+    * listar tudo
+    * detalhar um plano específico
+* Usuario
+    * listar tudo
+    * detalhar um usuário específico
+* Caixa
+    * listar tudo
+    * listar operações de um usuário específico
+
+## Instalando e usando
+Para instalar o pacote:
+```
+npm i --save mkauth-node-api
+```
+
+Depois no seu código:
+
+```js
+'use strict';
+
+// substitua pelo ip do seu servidor
+const server_ip = '172.31.255.2';
+// substitua pelo token do seu sistema
+// consulte seu token no menu Provedor/Dados da empresa dentro do mkauth
+const api_token = '1234567890';
+
+const MkAuthClient = require('mkauth-node-api');
+const mkauth = new MkAuthClient(server_ip, api_token);
+
+// lista todos os clientes
+mkauth.cliente.listAll()
+	.then(response=>{
+		response.clientes.forEach(cliente=>{
+		    console.log(cliente.nome);
+		});
+	});
+
+// detalha um cliente específico
+mkauth.cliente.list('cliente@provedor.com.br')
+    .then(response=>{
+        console.log(response);
+    });
+
+//lista todos os títulos
+mkauth.titulo.listAll()
+    .then(response=>{
+        response.titulos.forEach(titulo=>{
+            console.log(`${titulo.titulo} - ${titulo.valor}`);
+        });
+    });
+```
+
+----------
+## API Reference
+{{#class name="MkAuthClient"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Caixa"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Cliente"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Titulo"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Chamado"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Plano"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Conta"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Empresa"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Instalacao"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+
+{{#class name="Usuario"~}}
+{{>header~}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/class}}
+* * *
