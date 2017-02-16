@@ -22,8 +22,26 @@ class Usuario {
 	 *	Lista todos os usuários do sistema
 	 *	@returns	{Promise}
 	 */
-	listAll () {
-		return this.request('usuario', 'listAll');
+	listAll (filter_cbk) {
+		//return this.request('usuario', 'listAll');
+
+		return new Promise ((resolve, reject)=>{
+			this.request('usuario', 'listAll')
+				.then(response=>{
+					if (filter_cbk) {
+						try {
+							resolve (response.usuarios.filter(filter_cbk));
+						}
+						catch (err) {
+							reject (err);
+						}
+					}
+					else {
+						resolve (response.usuarios);
+					}
+				})
+				.catch (err=>reject(err));
+		});
 	}
 }
 

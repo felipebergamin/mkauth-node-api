@@ -24,8 +24,27 @@ class Cliente {
 	 *
 	 *	@returns {Promise}
 	 */
-	listAll () {
-		return this.request('cliente', 'listAll');
+	listAll (filter_cbk) {
+		
+		return new Promise ((resolve, reject)=>{
+			this.request('cliente', 'listAll')
+				.then(response=>{
+					if (filter_cbk) {
+						try {
+							resolve(response.clientes.filter(filter_cbk));
+						}
+						catch (err) {
+							reject(err);
+						}
+					}
+					else {
+						resolve(response.clientes);
+					}
+				})
+				.catch(err=>{
+					reject(err);
+				});
+		});
 	}
 }
 

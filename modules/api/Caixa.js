@@ -21,11 +21,29 @@ class Caixa {
 
 	/**
 	 * Lista todas as operações em caixa
-	 *
+	 * 
 	 * @returns	{Promise}
 	 */
-	listAll () {
-		return this.request('caixa', 'listAll');
+	listAll (filter_cbk) {
+		return new Promise((resolve, reject)=>{
+			this.request('caixa', 'listAll')
+				.then(response=>{
+					if(filter_cbk) {
+						try {
+							resolve(response.caixa.filter(filter_cbk));
+						}
+						catch (err) {
+							reject(err);
+						}
+					}
+					else {
+						resolve(response.caixa);
+					}
+				})
+				.catch(err=>{
+					reject(err);
+				});
+		});
 	}
 }
 

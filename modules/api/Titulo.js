@@ -24,8 +24,24 @@ class Titulo {
 	 *
 	 *	@returns	{Promise}
 	 */
-	listAll () {
-		return this.request('titulo', 'listAll');
+	listAll (filter_cbk) {
+		return new Promise ((resolve, reject)=>{
+			this.request('titulo', 'listAll')
+				.then(response=>{
+					if (filter_cbk) {
+						try {
+							resolve (response.titulos.filter(filter_cbk));
+						}
+						catch (err) {
+							reject (err);
+						}
+					}
+					else {
+						resolve(response.titulos);
+					}
+				})
+				.catch (err=>reject(err));
+		});
 	}
 
 	/**
