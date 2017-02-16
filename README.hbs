@@ -54,10 +54,20 @@ const mkauth = new MkAuthClient(server_ip, api_token);
 // lista todos os clientes
 mkauth.cliente.listAll()
 	.then(response=>{
-		response.clientes.forEach(cliente=>{
+		response.forEach(cliente=>{
 		    console.log(cliente.nome);
 		});
 	});
+
+// lista todos os clientes filtrando o resultado
+const filter_cbk = cliente=>/felipe/i.test(cliente.nome);
+
+mkauth.cliente.listAll(filter_cbk)
+    .then(response=>{
+        response.forEach(cliente=>{
+            console.log(cliente.nome);
+        });
+    });
 
 // detalha um cliente específico
 mkauth.cliente.list('cliente@provedor.com.br')
@@ -68,7 +78,7 @@ mkauth.cliente.list('cliente@provedor.com.br')
 //lista todos os títulos
 mkauth.titulo.listAll()
     .then(response=>{
-        response.titulos.forEach(titulo=>{
+        response.forEach(titulo=>{
             console.log(`${titulo.titulo} - ${titulo.valor}`);
         });
     });

@@ -20,6 +20,7 @@ class Usuario {
 
 	/**
 	 *	Lista todos os usuários do sistema
+	 *	@param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 *	@returns	{Promise}
 	 */
 	listAll (filter_cbk) {

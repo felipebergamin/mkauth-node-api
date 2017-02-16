@@ -22,6 +22,7 @@ class Caixa {
 	/**
 	 * Lista todas as operações em caixa
 	 * 
+	 * @param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 * @returns	{Promise}
 	 */
 	listAll (filter_cbk) {

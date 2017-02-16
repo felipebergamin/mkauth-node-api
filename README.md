@@ -54,10 +54,20 @@ const mkauth = new MkAuthClient(server_ip, api_token);
 // lista todos os clientes
 mkauth.cliente.listAll()
 	.then(response=>{
-		response.clientes.forEach(cliente=>{
+		response.forEach(cliente=>{
 		    console.log(cliente.nome);
 		});
 	});
+
+// lista todos os clientes filtrando o resultado
+const filter_cbk = cliente=>/felipe/i.test(cliente.nome);
+
+mkauth.cliente.listAll(filter_cbk)
+    .then(response=>{
+        response.forEach(cliente=>{
+            console.log(cliente.nome);
+        });
+    });
 
 // detalha um cliente específico
 mkauth.cliente.list('cliente@provedor.com.br')
@@ -68,7 +78,7 @@ mkauth.cliente.list('cliente@provedor.com.br')
 //lista todos os títulos
 mkauth.titulo.listAll()
     .then(response=>{
-        response.titulos.forEach(titulo=>{
+        response.forEach(titulo=>{
             console.log(`${titulo.titulo} - ${titulo.valor}`);
         });
     });
@@ -150,7 +160,7 @@ Construtor, cria uma nova instância do cliente
 
 * [Caixa](#Caixa)
     * [.list(login)](#Caixa+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Caixa+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Caixa+listAll) ⇒ <code>Promise</code>
 
 <a name="Caixa+list"></a>
 
@@ -165,10 +175,15 @@ Obtem as movimentações em caixa feitas por um determinado usuário.
 
 <a name="Caixa+listAll"></a>
 
-### caixa.listAll() ⇒ <code>Promise</code>
+### caixa.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todas as operações em caixa
 
 **Kind**: instance method of <code>[Caixa](#Caixa)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 
 <a name="Cliente"></a>
 
@@ -177,7 +192,7 @@ Lista todas as operações em caixa
 
 * [Cliente](#Cliente)
     * [.list(login)](#Cliente+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Cliente+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Cliente+listAll) ⇒ <code>Promise</code>
 
 <a name="Cliente+list"></a>
 
@@ -192,10 +207,15 @@ Obtem dados detalhados de um cliente usando o login como chave de busca
 
 <a name="Cliente+listAll"></a>
 
-### cliente.listAll() ⇒ <code>Promise</code>
+### cliente.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os usuários.
 
 **Kind**: instance method of <code>[Cliente](#Cliente)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 
 <a name="Titulo"></a>
 
@@ -204,7 +224,7 @@ Lista todos os usuários.
 
 * [Titulo](#Titulo)
     * [.list(numero_titulo)](#Titulo+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Titulo+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Titulo+listAll) ⇒ <code>Promise</code>
     * [.receber(numero_titulo)](#Titulo+receber) ⇒ <code>Promise</code>
 
 <a name="Titulo+list"></a>
@@ -220,10 +240,15 @@ Obtem detalhes de um título específico
 
 <a name="Titulo+listAll"></a>
 
-### titulo.listAll() ⇒ <code>Promise</code>
+### titulo.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os titulos
 
 **Kind**: instance method of <code>[Titulo](#Titulo)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 <a name="Titulo+receber"></a>
 
 ### titulo.receber(numero_titulo) ⇒ <code>Promise</code>
@@ -243,7 +268,7 @@ Receber um título em aberto
 
 * [Chamado](#Chamado)
     * [.list(id_chamado)](#Chamado+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Chamado+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Chamado+listAll) ⇒ <code>Promise</code>
 
 <a name="Chamado+list"></a>
 
@@ -258,10 +283,15 @@ Obtem detalhes de um chamado específico
 
 <a name="Chamado+listAll"></a>
 
-### chamado.listAll() ⇒ <code>Promise</code>
+### chamado.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os chamados no sistema
 
 **Kind**: instance method of <code>[Chamado](#Chamado)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 
 <a name="Plano"></a>
 
@@ -270,7 +300,7 @@ Lista todos os chamados no sistema
 
 * [Plano](#Plano)
     * [.list(nome_plano)](#Plano+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Plano+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Plano+listAll) ⇒ <code>Promise</code>
 
 <a name="Plano+list"></a>
 
@@ -285,10 +315,15 @@ Detalha um plano no sistema
 
 <a name="Plano+listAll"></a>
 
-### plano.listAll() ⇒ <code>Promise</code>
+### plano.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Listar todos os planos do sistema
 
 **Kind**: instance method of <code>[Plano](#Plano)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 
 <a name="Conta"></a>
 
@@ -297,7 +332,7 @@ Listar todos os planos do sistema
 
 * [Conta](#Conta)
     * [.list(numero_conta)](#Conta+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Conta+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Conta+listAll) ⇒ <code>Promise</code>
 
 <a name="Conta+list"></a>
 
@@ -312,10 +347,15 @@ Detalha uma conta bancária do sistema
 
 <a name="Conta+listAll"></a>
 
-### conta.listAll() ⇒ <code>Promise</code>
+### conta.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todas as contas bancárias
 
 **Kind**: instance method of <code>[Conta](#Conta)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 
 <a name="Empresa"></a>
 
@@ -335,7 +375,7 @@ Lista os dados cadastrais da empresa
 
 * [Instalacao](#Instalacao)
     * [.list(id)](#Instalacao+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Instalacao+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Instalacao+listAll) ⇒ <code>Promise</code>
 
 <a name="Instalacao+list"></a>
 
@@ -350,10 +390,15 @@ Detalha uma instalação
 
 <a name="Instalacao+listAll"></a>
 
-### instalacao.listAll() ⇒ <code>Promise</code>
+### instalacao.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todas as instalações
 
 **Kind**: instance method of <code>[Instalacao](#Instalacao)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 
 <a name="Usuario"></a>
 
@@ -362,7 +407,7 @@ Lista todas as instalações
 
 * [Usuario](#Usuario)
     * [.list(login)](#Usuario+list) ⇒ <code>Promise</code>
-    * [.listAll()](#Usuario+listAll) ⇒ <code>Promise</code>
+    * [.listAll([filter_cbk])](#Usuario+listAll) ⇒ <code>Promise</code>
 
 <a name="Usuario+list"></a>
 
@@ -377,8 +422,13 @@ Detalha um usuário do sistema
 
 <a name="Usuario+listAll"></a>
 
-### usuario.listAll() ⇒ <code>Promise</code>
+### usuario.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os usuários do sistema
 
 **Kind**: instance method of <code>[Usuario](#Usuario)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filter_cbk] | <code>function</code> | Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem |
+
 * * *
