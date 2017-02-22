@@ -1,3 +1,5 @@
+'use strict';
+
 const rp = require('request-promise');
 
 module.exports = (server_ip, api_token)=>{
