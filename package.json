@@ -1,6 +1,6 @@
 {
   "name": "mkauth-node-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cliente para api do sistema mk-auth para provedores",
   "main": "app.js",
   "scripts": {
