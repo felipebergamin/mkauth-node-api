@@ -2,6 +2,12 @@
 Client em node.js para API do sistema [Mk-Auth](http://mk-auth.com.br/) de controle de provedores.
 Este pacote oferece suporte à todos os recursos oferecidos pela mini API do sistema.
 
+### v2.0
+
+Esta versão apenas corrige a url da API para a nova forma de autenticar as requisições.
+
+Se você tem uma versão muito antiga do Mk-Auth, talvez precise usar a versão 1 d pacote.
+
 ### Métodos suportados
 * Clientes
     * listar tudo
