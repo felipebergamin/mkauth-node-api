@@ -5,7 +5,7 @@ const rp = require('request-promise');
 module.exports = (server_ip, api_token)=>{
 
 	const request = (resource, method, value)=>{
-		let uri = `http://${server_ip}/api/${api_token}/${resource}/${method}`;
+		let uri = `http://api:${api_token}@${server_ip}/api/${resource}/${method}`;
 
 		if(value)
 			uri += `/${value}`;
