@@ -15,8 +15,9 @@ class Titulo {
 	 *	@param		{Number}	numero_titulo	Numero do titulo que se deseja
 	 *	@returns	{Promise}
 	 */
-	list (numero_titulo) {
-		return this.request('titulo', 'list', numero_titulo);
+	async list (numeroTitulo) {
+    const { data } = await this.request('titulo', 'list', numeroTitulo);
+    return data;
 	}
 
 	/**
@@ -24,24 +25,16 @@ class Titulo {
 	 *	@param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 *	@returns	{Promise}
 	 */
-	listAll (filter_cbk) {
-		return new Promise ((resolve, reject)=>{
-			this.request('titulo', 'listAll')
-				.then(response=>{
-					if (filter_cbk) {
-						try {
-							resolve (response.titulos.filter(filter_cbk));
-						}
-						catch (err) {
-							reject (err);
-						}
-					}
-					else {
-						resolve(response.titulos);
-					}
-				})
-				.catch (err=>reject(err));
-		});
+  async listAll (filterCbk) {
+    const { data } = await this.request('titulo', 'listAll');
+    
+    if (!Array.isArray(data.titulos)) {
+      return [];
+    }
+
+    return filterCbk
+      ? data.titulos.filter(filterCbk)
+      : data.titulos;
 	}
 
 	/**
@@ -50,8 +43,9 @@ class Titulo {
 	 *	@param		{Number}	numero_titulo	Número do título a dar baixa
 	 *	@returns	{Promise}
 	 */
-	receber (numero_titulo) {
-		return this.request('titulo', 'receber', numero_titulo);
+	async receber (numero_titulo) {
+    const { data } = await this.request('titulo', 'receber', numero_titulo);
+    return data;
 	}
 }
 

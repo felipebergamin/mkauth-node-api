@@ -14,8 +14,9 @@ class Conta {
 	 *	@param		{Number}	numero_conta	Número da conta que se deseja
 	 *	@returns	{Promise}
 	 */
-	list (numero_conta) {
-		return this.request('conta', 'list', numero_conta);
+	async list (numero_conta) {
+    const { data } = await this.request('conta', 'list', numero_conta);
+    return data;
 	}
 
 	/**
@@ -23,24 +24,16 @@ class Conta {
 	 *	@param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 *	@returns	{Promise}
 	 */
-	listAll (filter_cbk) {
-		return new Promise ((resolve, reject)=>{
-			this.request('conta', 'listAll')
-				.then(response=>{
-					if(filter_cbk) {
-						try {
-							resolve (response.contas.filter(filter_cbk));
-						}
-						catch (err) {
-							reject (err);
-						}
-					}
-					else {
-						resolve(response.contas);
-					}
-				})
-				.catch (err=>reject(err));
-		});
+	async listAll (filterCbk) {
+    const { data } = await this.request('conta', 'listAll');
+
+    if (!Array.isArray(data.contas)) {
+      return [];
+    }
+
+    return typeof filterCbk === 'function'
+      ? data.contas.filter(filterCbk)
+      : data.contas;
 	}
 }
 

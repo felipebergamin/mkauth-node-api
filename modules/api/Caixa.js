@@ -15,8 +15,9 @@ class Caixa {
 	 * @param	{String}	login	Login do usuário que se deseja listar as movimentaçẽs
 	 * @returns	{Promise}
 	 */
-	list (login) {
-		return this.request('caixa', 'list', login);
+	async list (login) {
+    const { data } = await this.request('caixa', 'list', login);
+    return data;
 	}
 
 	/**
@@ -25,26 +26,16 @@ class Caixa {
 	 * @param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 * @returns	{Promise}
 	 */
-	listAll (filter_cbk) {
-		return new Promise((resolve, reject)=>{
-			this.request('caixa', 'listAll')
-				.then(response=>{
-					if(filter_cbk) {
-						try {
-							resolve(response.caixa.filter(filter_cbk));
-						}
-						catch (err) {
-							reject(err);
-						}
-					}
-					else {
-						resolve(response.caixa);
-					}
-				})
-				.catch(err=>{
-					reject(err);
-				});
-		});
+	async listAll (filterCbk) {
+    const { data } = await this.request('caixa', 'listAll');
+
+    if (!Array.isArray(data.caixa)) {
+      return [];
+    }
+
+    return typeof filterCbk === 'function'
+      ? data.caixa.filter(filterCbk)
+      : data.caixa;
 	}
 }
 

@@ -14,35 +14,25 @@ class Usuario {
 	 *	@param		{String}	login	Login do usuário no sistema
 	 *	@returns	{Promise}
 	 */
-	list (login_usuario) {
-		return this.request('usuario', 'list', login_usuario);
+	async list (login) {
+		return (await this.request('usuario', 'list', login)).data;
 	}
 
 	/**
 	 *	Lista todos os usuários do sistema
-	 *	@param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
+	 *	@param {function} [filterCbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 *	@returns	{Promise}
 	 */
-	listAll (filter_cbk) {
-		//return this.request('usuario', 'listAll');
+	async listAll (filterCbk) {
+    const { data } = await this.request('usuario', 'listAll');
 
-		return new Promise ((resolve, reject)=>{
-			this.request('usuario', 'listAll')
-				.then(response=>{
-					if (filter_cbk) {
-						try {
-							resolve (response.usuarios.filter(filter_cbk));
-						}
-						catch (err) {
-							reject (err);
-						}
-					}
-					else {
-						resolve (response.usuarios);
-					}
-				})
-				.catch (err=>reject(err));
-		});
+    if (!Array.isArray(data.usuarios)) {
+      return [];
+    }
+
+    return typeof filterCbk === 'function'
+      ? data.usuarios.filter(filterCbk)
+      : data.usuarios;
 	}
 }
 
