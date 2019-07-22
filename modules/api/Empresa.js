@@ -13,8 +13,8 @@ class Empresa {
 	 *	Lista os dados cadastrais da empresa
 	 *	@returns	{Promise}
 	 */
-	listAll () {
-		return this.request('empresa', 'listAll');
+	async listAll () {
+    return (await this.request('empresa', 'listAll')).data;
 	}
 }
 

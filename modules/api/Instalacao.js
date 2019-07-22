@@ -14,33 +14,26 @@ class Instalacao {
 	 *	@param		{Number}	id	ID da instalação que se deseja
 	 *	@returns	{Promise}
 	 */
-	list (id_instalacao) {
-		return this.request('instalacao', 'list', id_instalacao);
+	async list (idInstalacao) {
+    const { data } = await this.request('instalacao', 'list', idInstalacao);
+    return data;
 	}
 
 	/**
 	 *	Lista todas as instalações
-	 *	@param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
+	 *	@param {function} [filterCbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 *	@returns	{Promise}
 	 */
-	listAll (filter_cbk) {
-		return new Promise ((resolve, reject)=>{
-			this.request('instalacao', 'listAll')
-				.then(response=>{
-					if (filter_cbk) {
-						try {
-							resolve (response.instalacoes.filter(filter_cbk));
-						}
-						catch (err) {
-							reject (err);
-						}
-					}
-					else {
-						resolve (response.instalacoes);
-					}
-				})
-				.catch(err=>reject(err));
-		})
+	async listAll (filterCbk) {
+    const { data } = await this.request('instalacao', 'listAll');
+
+    if (!Array.isArray(data.instalacoes)) {
+      return [];
+    }
+
+    return typeof filterCbk === 'function'
+      ? data.instalacoes.filter(filterCbk)
+      : data.instalacoes;
 	}
 }
 

@@ -14,8 +14,9 @@ class Chamado {
 	 *	@param	{String}	id_chamado	ID do chamado no sistema
 	 *	@returns	{Promise}
 	 */
-	list (id_chamado) {
-		return this.request('chamado', 'list', id_chamado);
+	async list (idChamado) {
+    const { data } = await this.request('chamado', 'list', idChamado);
+    return data;
 	}
 
 	/**
@@ -23,26 +24,16 @@ class Chamado {
 	 *  @param {function} [filter_cbk] Essa callback será repassada para `Array.filter()`, filtrando o resultado da listagem
 	 *	@returns	{Promise}
 	 */
-	listAll (filter_cbk) {
-		return new Promise ((resolve, reject)=>{
-			this.request('chamado', 'listAll')
-				.then(response=>{
-					if (filter_cbk) {
-						try {
-							resolve(response.chamados.filter(filter_cbk));
-						}
-						catch (err) {
-							reject(err);
-						}
-					}
-					else {
-						resolve(response.chamados);
-					}
-				})
-				.catch(err=>{
-					reject(err);
-				});
-		});
+	async listAll (filterCbk) {
+    const { data } = await this.request('chamado', 'listAll');
+
+    if (!Array.isArray(data.chamados)) {
+      return [];
+    }
+
+    return typeof filterCbk === 'function'
+      ? data.chamados.filter(filterCbk)
+      : data.chamados;
 	}
 }
 
