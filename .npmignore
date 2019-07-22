@@ -1,1 +1,4 @@
 README.hbs
+node_modules
+.git
+test.js
