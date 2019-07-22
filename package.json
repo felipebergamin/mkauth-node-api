@@ -28,6 +28,6 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^2.0.1"
+    "jsdoc-to-markdown": "^5.0.0"
   }
 }

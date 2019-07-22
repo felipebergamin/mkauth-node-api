@@ -101,15 +101,15 @@ MkAuthClient
 
 * [MkAuthClient](#MkAuthClient)
     * [new MkAuthClient(IP, Token)](#new_MkAuthClient_new)
-    * [.cliente](#MkAuthClient+cliente) : <code>[Cliente](#Cliente)</code>
-    * [.titulo](#MkAuthClient+titulo) : <code>[Titulo](#Titulo)</code>
-    * [.chamado](#MkAuthClient+chamado) : <code>[Chamado](#Chamado)</code>
-    * [.plano](#MkAuthClient+plano) : <code>[Plano](#Plano)</code>
-    * [.conta](#MkAuthClient+conta) : <code>[Conta](#Conta)</code>
-    * [.empresa](#MkAuthClient+empresa) : <code>[Empresa](#Empresa)</code>
-    * [.instalacao](#MkAuthClient+instalacao) : <code>[Instalacao](#Instalacao)</code>
-    * [.usuario](#MkAuthClient+usuario) : <code>[Usuario](#Usuario)</code>
-    * [.caixa](#MkAuthClient+caixa) : <code>[Caixa](#Caixa)</code>
+    * [.cliente](#MkAuthClient+cliente) : [<code>Cliente</code>](#Cliente)
+    * [.titulo](#MkAuthClient+titulo) : [<code>Titulo</code>](#Titulo)
+    * [.chamado](#MkAuthClient+chamado) : [<code>Chamado</code>](#Chamado)
+    * [.plano](#MkAuthClient+plano) : [<code>Plano</code>](#Plano)
+    * [.conta](#MkAuthClient+conta) : [<code>Conta</code>](#Conta)
+    * [.empresa](#MkAuthClient+empresa) : [<code>Empresa</code>](#Empresa)
+    * [.instalacao](#MkAuthClient+instalacao) : [<code>Instalacao</code>](#Instalacao)
+    * [.usuario](#MkAuthClient+usuario) : [<code>Usuario</code>](#Usuario)
+    * [.caixa](#MkAuthClient+caixa) : [<code>Caixa</code>](#Caixa)
 
 <a name="new_MkAuthClient_new"></a>
 
@@ -124,40 +124,40 @@ Construtor, cria uma nova instância do cliente
 
 <a name="MkAuthClient+cliente"></a>
 
-### mkAuthClient.cliente : <code>[Cliente](#Cliente)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.cliente : [<code>Cliente</code>](#Cliente)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+titulo"></a>
 
-### mkAuthClient.titulo : <code>[Titulo](#Titulo)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.titulo : [<code>Titulo</code>](#Titulo)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+chamado"></a>
 
-### mkAuthClient.chamado : <code>[Chamado](#Chamado)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.chamado : [<code>Chamado</code>](#Chamado)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+plano"></a>
 
-### mkAuthClient.plano : <code>[Plano](#Plano)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.plano : [<code>Plano</code>](#Plano)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+conta"></a>
 
-### mkAuthClient.conta : <code>[Conta](#Conta)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.conta : [<code>Conta</code>](#Conta)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+empresa"></a>
 
-### mkAuthClient.empresa : <code>[Empresa](#Empresa)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.empresa : [<code>Empresa</code>](#Empresa)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+instalacao"></a>
 
-### mkAuthClient.instalacao : <code>[Instalacao](#Instalacao)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.instalacao : [<code>Instalacao</code>](#Instalacao)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+usuario"></a>
 
-### mkAuthClient.usuario : <code>[Usuario](#Usuario)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.usuario : [<code>Usuario</code>](#Usuario)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 <a name="MkAuthClient+caixa"></a>
 
-### mkAuthClient.caixa : <code>[Caixa](#Caixa)</code>
-**Kind**: instance property of <code>[MkAuthClient](#MkAuthClient)</code>  
+### mkAuthClient.caixa : [<code>Caixa</code>](#Caixa)
+**Kind**: instance property of [<code>MkAuthClient</code>](#MkAuthClient)  
 
 <a name="Caixa"></a>
 
@@ -173,7 +173,7 @@ Construtor, cria uma nova instância do cliente
 ### caixa.list(login) ⇒ <code>Promise</code>
 Obtem as movimentações em caixa feitas por um determinado usuário.
 
-**Kind**: instance method of <code>[Caixa](#Caixa)</code>  
+**Kind**: instance method of [<code>Caixa</code>](#Caixa)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -184,7 +184,7 @@ Obtem as movimentações em caixa feitas por um determinado usuário.
 ### caixa.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todas as operações em caixa
 
-**Kind**: instance method of <code>[Caixa](#Caixa)</code>  
+**Kind**: instance method of [<code>Caixa</code>](#Caixa)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -205,7 +205,7 @@ Lista todas as operações em caixa
 ### cliente.list(login) ⇒ <code>Promise</code>
 Obtem dados detalhados de um cliente usando o login como chave de busca
 
-**Kind**: instance method of <code>[Cliente](#Cliente)</code>  
+**Kind**: instance method of [<code>Cliente</code>](#Cliente)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -216,7 +216,7 @@ Obtem dados detalhados de um cliente usando o login como chave de busca
 ### cliente.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os usuários.
 
-**Kind**: instance method of <code>[Cliente](#Cliente)</code>  
+**Kind**: instance method of [<code>Cliente</code>](#Cliente)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ Lista todos os usuários.
 ### titulo.list(numero_titulo) ⇒ <code>Promise</code>
 Obtem detalhes de um título específico
 
-**Kind**: instance method of <code>[Titulo](#Titulo)</code>  
+**Kind**: instance method of [<code>Titulo</code>](#Titulo)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -249,7 +249,7 @@ Obtem detalhes de um título específico
 ### titulo.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os titulos
 
-**Kind**: instance method of <code>[Titulo](#Titulo)</code>  
+**Kind**: instance method of [<code>Titulo</code>](#Titulo)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -260,7 +260,7 @@ Lista todos os titulos
 ### titulo.receber(numero_titulo) ⇒ <code>Promise</code>
 Receber um título em aberto
 
-**Kind**: instance method of <code>[Titulo](#Titulo)</code>  
+**Kind**: instance method of [<code>Titulo</code>](#Titulo)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -281,7 +281,7 @@ Receber um título em aberto
 ### chamado.list(id_chamado) ⇒ <code>Promise</code>
 Obtem detalhes de um chamado específico
 
-**Kind**: instance method of <code>[Chamado](#Chamado)</code>  
+**Kind**: instance method of [<code>Chamado</code>](#Chamado)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -292,7 +292,7 @@ Obtem detalhes de um chamado específico
 ### chamado.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os chamados no sistema
 
-**Kind**: instance method of <code>[Chamado](#Chamado)</code>  
+**Kind**: instance method of [<code>Chamado</code>](#Chamado)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -313,7 +313,7 @@ Lista todos os chamados no sistema
 ### plano.list(nome_plano) ⇒ <code>Promise</code>
 Detalha um plano no sistema
 
-**Kind**: instance method of <code>[Plano](#Plano)</code>  
+**Kind**: instance method of [<code>Plano</code>](#Plano)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -324,7 +324,7 @@ Detalha um plano no sistema
 ### plano.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Listar todos os planos do sistema
 
-**Kind**: instance method of <code>[Plano](#Plano)</code>  
+**Kind**: instance method of [<code>Plano</code>](#Plano)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -345,7 +345,7 @@ Listar todos os planos do sistema
 ### conta.list(numero_conta) ⇒ <code>Promise</code>
 Detalha uma conta bancária do sistema
 
-**Kind**: instance method of <code>[Conta](#Conta)</code>  
+**Kind**: instance method of [<code>Conta</code>](#Conta)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -356,7 +356,7 @@ Detalha uma conta bancária do sistema
 ### conta.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todas as contas bancárias
 
-**Kind**: instance method of <code>[Conta](#Conta)</code>  
+**Kind**: instance method of [<code>Conta</code>](#Conta)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -372,7 +372,7 @@ Lista todas as contas bancárias
 ### empresa.listAll() ⇒ <code>Promise</code>
 Lista os dados cadastrais da empresa
 
-**Kind**: instance method of <code>[Empresa](#Empresa)</code>  
+**Kind**: instance method of [<code>Empresa</code>](#Empresa)  
 
 <a name="Instalacao"></a>
 
@@ -388,7 +388,7 @@ Lista os dados cadastrais da empresa
 ### instalacao.list(id) ⇒ <code>Promise</code>
 Detalha uma instalação
 
-**Kind**: instance method of <code>[Instalacao](#Instalacao)</code>  
+**Kind**: instance method of [<code>Instalacao</code>](#Instalacao)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -399,7 +399,7 @@ Detalha uma instalação
 ### instalacao.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todas as instalações
 
-**Kind**: instance method of <code>[Instalacao](#Instalacao)</code>  
+**Kind**: instance method of [<code>Instalacao</code>](#Instalacao)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -420,7 +420,7 @@ Lista todas as instalações
 ### usuario.list(login) ⇒ <code>Promise</code>
 Detalha um usuário do sistema
 
-**Kind**: instance method of <code>[Usuario](#Usuario)</code>  
+**Kind**: instance method of [<code>Usuario</code>](#Usuario)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -431,7 +431,7 @@ Detalha um usuário do sistema
 ### usuario.listAll([filter_cbk]) ⇒ <code>Promise</code>
 Lista todos os usuários do sistema
 
-**Kind**: instance method of <code>[Usuario](#Usuario)</code>  
+**Kind**: instance method of [<code>Usuario</code>](#Usuario)  
 
 | Param | Type | Description |
 | --- | --- | --- |
