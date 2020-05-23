@@ -1,4 +1,8 @@
-# mkauth-node-api
+# Não estou mais mantendo esse pacote
+
+---
+
+## mkauth-node-api
 Client em node.js para API do sistema [Mk-Auth](http://mk-auth.com.br/) de controle de provedores.
 Este pacote oferece suporte à todos os recursos oferecidos pela mini API do sistema.
 
